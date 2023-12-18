@@ -5,11 +5,11 @@ import ProfessionalData from "../professionalData";
 import AccessData from "../accessData";
 
 export default function EditPanel() {
-  const [personalData, setPersonalData] = useState<boolean>(true);
-  const [professionalData, setProfessionalData] = useState<boolean>(false);
-  const [accessData, setAccessData] = useState<boolean>(false);
+  const [personalData, setPersonalData] = useState(true);
+  const [professionalData, setProfessionalData] = useState(false);
+  const [accessData, setAccessData] = useState(false);
 
-  const handleTabDataActive = (tab: any) => {
+  const handleTabDataActive = (tab) => {
     const liArray = document.querySelectorAll("li");
     liArray.forEach((li) => {
       li.classList.remove("active");
@@ -19,7 +19,7 @@ export default function EditPanel() {
       setPersonalData(true);
       setProfessionalData(false);
       setAccessData(false);
-    } else if (tab.target.innerText === "AberDados Profissionaistos") {
+    } else if (tab.target.innerText === "Dados Profissionais") {
       setPersonalData(false);
       setProfessionalData(true);
       setAccessData(false);
@@ -35,14 +35,14 @@ export default function EditPanel() {
   return (
     <Container>
       <Menu>
-        <Option onClick={(e: any) => handleTabDataActive(e)}>
-          <li>Dados Pessoais</li>
+        <Option onClick={(e) => handleTabDataActive(e)}>
+          <h3>Dados Pessoais</h3>
         </Option>
-        <Option>
-          <li>Dados Profissionais</li>
+        <Option onClick={(e) => handleTabDataActive(e)}>
+          <h3>Dados Profissionais</h3>
         </Option>
-        <Option>
-          <li>Dados de Acesso</li>
+        <Option onClick={(e) => handleTabDataActive(e)}>
+          <h3>Dados de Acesso</h3>
         </Option>
       </Menu>
       {personalData && <PersonalData />}
